@@ -35,9 +35,7 @@ describe('Test find customer use case', () => {
         const address = new Address("Dos bobos", 2546, "14482456", "São Paulo");
         customer.changeAddress(address);
 
-        const customerCreated = await customerRepository.create(customer);
-        console.log(customerCreated);
-        
+        const customerCreated = await customerRepository.create(customer);     
 
         const input = { id: "123" };
 
@@ -52,8 +50,8 @@ describe('Test find customer use case', () => {
             }
         }
 
-        // const result = useCase.execute(input);
-        
-        // expect(result).toEqual(output)
+        const result = await useCase.execute(input);
+       
+        expect(result).toEqual(output);
     })
 })

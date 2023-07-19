@@ -42,3 +42,10 @@ AGREGADOS:
 // const item1 = new OrderItem("1", "Item1", 10);
 // const item2 = new OrderItem("2", "Item2", 15);
 // const order = new Order("1", "123", [item1, item2]);
+
+----------------------------------------------------------------------
+O domain do DDD está sendo o nosso nucleo da aplicação;
+A camada de UseCase será a camada que ficara acima da domain;
+
+---------------------------------------------------------------------
+mocks: é uma classe falsa, para ter um melhor controle
