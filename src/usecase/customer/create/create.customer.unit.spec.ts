@@ -6,7 +6,7 @@ const input = {
         street: "Dos bobos",
         city: "São Paulo",
         number: 2546,
-        zip: "14482456",
+        zip: "144824-56",
     }
 };
 
@@ -27,9 +27,7 @@ describe("Unit test create customer use case", () => {
         const customerCreateUseCase = new CreateCustomerUseCase(customerRepository);
 
         const output = await customerCreateUseCase.execute(input)
-
-        console.log(output);
-        
+       
         expect(output).toEqual({
             id: expect.any(String),
             name: input.name,
