@@ -26,7 +26,7 @@ export default class Customer extends Entity {
         id: string, name: string
     ) {
         super();
-        this.id = id;
+        this._id = id;
         this._name = name;
         this.validate();
 
@@ -38,7 +38,7 @@ export default class Customer extends Entity {
     validate() {
         if (this.id.length === 0) {
             this.notification.addError({
-                message: "ID is required",
+                message: "Id is required",
                 context: "customer"
             })
         }
