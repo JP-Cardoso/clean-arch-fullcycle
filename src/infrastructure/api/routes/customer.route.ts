@@ -2,6 +2,7 @@ import express, { Request, Response } from 'express';
 import CreateCustomerUseCase from '../../../usecase/customer/create/create.customer.usecase';
 import CustomerRepository from '../../customer/repository/sequelize/cutomer.repository';
 import ListCustomerUseCase from '../../../usecase/customer/list/list.customer.usecase';
+import CustomerPresenter from '../presenters/cutomer.presenter';
 
 export const customerRoute = express.Router();
 
@@ -27,9 +28,13 @@ customerRoute.post("/", async (req: Request, res: Response) => {
 customerRoute.get('/', async (req: Request, res: Response) => {
     const useCase = new ListCustomerUseCase(new CustomerRepository());
     try {
-        
+        //A principio estoupartindo do pressuposto que tudo será JSON
         const output = await useCase.execute({});
-        res.send(output);
+
+        res.format({
+            json: async () => res.send(output),
+            xml: async () => res.send(CustomerPresenter.toXML(output)),
+        })
 
     } catch (error) {
 
